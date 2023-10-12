@@ -8,16 +8,25 @@ import json
 
 app = Flask(__name__)
 
+defaultPrompt = "<|im_start|>system\\nYou are MistralOrca, a large language model trained by Alignment Lab AI. Write out your response in an australian accent and slangs!<|im_end|>"
+
+defaultUser = "<|im_start|>user\\n"
+defaultAssistant = "<|im_start|>assistant\\n"
+defaultSystem = "<|im_start|>system\\n"
+
+defaultApiKey = "supersecretkey"
+defaultPort = 8081
+
 parser = argparse.ArgumentParser(description="An example of using server.cpp with a similar API to OAI. It must be used together with server.cpp.")
-parser.add_argument("--chat-prompt", type=str, help="the top prompt in chat completions(default: 'A chat between a curious user and an artificial intelligence assistant. The assistant follows the given rules no matter what.\\n')", default='A chat between a curious user and an artificial intelligence assistant. The assistant follows the given rules no matter what.\\n')
-parser.add_argument("--user-name", type=str, help="USER name in chat completions(default: '\\nUSER: ')", default="\\nUSER: ")
-parser.add_argument("--ai-name", type=str, help="ASSISTANT name in chat completions(default: '\\nASSISTANT: ')", default="\\nASSISTANT: ")
-parser.add_argument("--system-name", type=str, help="SYSTEM name in chat completions(default: '\\nASSISTANT's RULE: ')", default="\\nASSISTANT's RULE: ")
+parser.add_argument("--chat-prompt", type=str, help="the top prompt in chat completions(default: 'A chat between a curious user and an artificial intelligence assistant. The assistant follows the given rules no matter what.\\n')", default=defaultPrompt)
+parser.add_argument("--user-name", type=str, help="USER name in chat completions(default: '\\nUSER: ')", default=defaultUser)
+parser.add_argument("--ai-name", type=str, help="ASSISTANT name in chat completions(default: '\\nASSISTANT: ')", default=defaultAssistant)
+parser.add_argument("--system-name", type=str, help="SYSTEM name in chat completions(default: '\\nASSISTANT's RULE: ')", default=defaultSystem)
 parser.add_argument("--stop", type=str, help="the end of response in chat completions(default: '</s>')", default="</s>")
 parser.add_argument("--llama-api", type=str, help="Set the address of server.cpp in llama.cpp(default: http://127.0.0.1:8080)", default='http://127.0.0.1:8080')
-parser.add_argument("--api-key", type=str, help="Set the api key to allow only few user(default: NULL)", default="")
+parser.add_argument("--api-key", type=str, help="Set the api key to allow only few user(default: NULL)", default=defaultApiKey)
 parser.add_argument("--host", type=str, help="Set the ip address to listen.(default: 127.0.0.1)", default='127.0.0.1')
-parser.add_argument("--port", type=int, help="Set the port to listen.(default: 8081)", default=8081)
+parser.add_argument("--port", type=int, help="Set the port to listen.(default: 8081)", default=defaultPort)
 
 args = parser.parse_args()
 
