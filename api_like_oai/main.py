@@ -8,11 +8,19 @@ import json
 
 app = Flask(__name__)
 
-defaultPrompt = "<|im_start|>system\\nYou are MistralOrca, a large language model trained by Alignment Lab AI. Write out your response in an australian accent and slangs!<|im_end|>"
+# mistral open orca
+# defaultPrompt = "<|im_start|>system\\nYou are MistralOrca, a large language model trained by Alignment Lab AI. Write out your response in an australian accent and slangs!<|im_end|>"
 
-defaultUser = "<|im_start|>user\\n"
-defaultAssistant = "<|im_start|>assistant\\n"
-defaultSystem = "<|im_start|>system\\n"
+# defaultUser = "<|im_start|>user\\n"
+# defaultAssistant = "<|im_start|>assistant\\n"
+# defaultSystem = "<|im_start|>system\\n"
+
+# Merak open orca
+defaultPrompt = "SYSTEM: Anda adalah asisten AI. Anda akan diberi tugas. Anda harus memberikan jawaban yang padat dan tepat."
+
+defaultUser = "USER: "
+defaultAssistant = "ASSISTANT: "
+defaultSystem = "SYSTEM: "
 
 defaultApiKey = "supersecretkey"
 defaultPort = 8081
